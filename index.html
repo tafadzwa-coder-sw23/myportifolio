@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ernest Tafadzwa Maenda's Professional Portfolio</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts for Poppins and Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /*
+         * styles/styles.css (Inline for self-contained immersive)
+         * Refactored to use rem units for scalability, enhanced responsiveness for images,
+         * refined media queries, and added text/page transitions.
+         */
+
+        :root {
+            --primary-color: #e44d26; /* A more vibrant red, typical for web tech */
+            --primary-color-rgb: 228, 77, 38;
+            --secondary-color: #2ecc71; /* Keep for accent, or change to a complementary orange/yellow */
+            --bg-color: #121212; /* Slightly darker for deeper contrast */
+            --text-color: #f0f0f0; /* Slightly off-white for softer look */
+            --hover-color: #ff6f4f; /* A brighter hover for the new primary */
+            --section-padding-desktop: 8rem 9% 8rem;
+            --section-padding-tablet: 7rem 5% 7rem;
+            --section-padding-mobile: 6rem 3% 6rem;
+            --transition: all 0.4s ease; /* Slightly longer transition for smoothness */
+            --container-width: 120rem; /* Changed to rem */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Essential for consistent sizing */
+            text-decoration: none;
+            border: none;
+            outline: none;
+            font-family: 'Poppins', Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            /* Base font size for REM units: 1rem = 10px (default 16px * 0.625 = 10px) */
+            font-size: 62.5%; /* 1rem = 10px */
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Page Transition Overlay */
+        .page-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color); /* Matches your primary color */
+            z-index: 9999; /* Ensure it's on top of everything */
+            opacity: 0;
+            visibility: hidden;
+            transform: scaleY(0); /* Start hidden, scaled down */
+            transform-origin: top;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s;
+        }
+
+        .page-transition-overlay.is-active {
+            opacity: 1;
+            visibility: visible;
+            transform: scaleY(1);
+            /* For exit animation, you might change origin or run a second animation */
+            transition: transform 0.5s ease-in, opacity 0.5s ease-in, visibility 0.5s;
+        }
+
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 9%; /* Using rem */
+            background-color: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(1rem); /* Using rem */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        header.sticky {
+            padding: 1.5rem 9%; /* Using rem */
+            background-color: rgba(18, 18, 18, 0.98);
+            box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, 0.4); /* Using rem */
+        }
+
+        .logo {
+            font-size: 3.2rem; /* Using rem */
+            color: var(--primary-color);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: var(--hover-color);
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem; /* Using rem */
+        }
+
+        nav a {
+            font-size: 1.8rem; /* Using rem */
+            color: var(--text-color);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem; /* Using rem */
+            left: 0;
+            width: 0;
+            height: 0.2rem; /* Using rem */
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-color);
+        }
+
+        .menu-icon {
+            font-size: 2.8rem; /* Using rem */
+            color: var(--text-color);
+            cursor: pointer;
+            display: none; /* Hidden by default on larger screens */
+            z-index: 101; /* Ensure it's above the header and nav */
+        }
+
+        /* Home Section */
+        .home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6rem; /* Using rem */
+            min-height: 100vh;
+            padding: var(--section-padding-desktop);
+            background: radial-gradient(circle at top left, #202020, var(--bg-color));
+            flex-wrap: wrap-reverse; /* Puts image first on mobile */
+        }
+
+        .home-content {
+            max-width: 60rem; /* Using rem */
+            animation: fadeIn 1s ease; /* Main container animation */
+        }
+
+        /* Text Fade-in specific classes (for elements that ScrollReveal doesn't handle directly, or for extra flair) */
+        .fade-in-text {
+            opacity: 0;
+            transform: translateY(2rem); /* Starts 2rem (20px) down */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+        }
+
+        .fade-in-text.revealed { /* Class added by ScrollReveal or manually */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .home-content h1 {
+            font-size: 6rem; /* Using rem */
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 2rem; /* Using rem */
+        }
+
+        .home-content h1 span {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .home-content h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0.3rem; /* Using rem */
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .home-content h1 span:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .home-content h3 {
+            font-size: 3.5rem; /* Using rem */
+            margin: 2rem 0; /* Using rem */
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .home-content p {
+            font-size: 1.9rem; /* Using rem */
+            margin: 2rem 0 4rem; /* Using rem */
+            color: #bdbdbd;
+        }
+
+        .home-img {
+            position: relative;
+            width: 100%; /* Ensures responsiveness for the container */
+            max-width: 30rem; /* Max width for the image container */
+            animation: fadeIn 1s ease 0.5s backwards;
+        }
+
+        .home-img img {
+            width: 100%; /* Image fills its container */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+            border-radius: 50%;
+            border: 0.5rem solid var(--primary-color); /* Using rem */
+            transition: var(--transition);
+            filter: brightness(0.95);
+            box-shadow: 0 0 4rem rgba(var(--primary-color-rgb), 0.5); /* Stronger initial shadow */
+            animation: floatImage 4s ease-in-out infinite; /* Add a floating animation */
+        }
+
+        .home-img img:hover {
+            transform: translateY(-1.5rem) scale(1.02); /* Using rem */
+            box-shadow: 0 0 5rem var(--hover-color); /* Using rem */
+            border-color: var(--hover-color);
+            filter: brightness(1.1);
+        }
+
+        @keyframes floatImage {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-2rem); } /* Using rem */
+            100% { transform: translateY(0); }
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 2rem; /* Using rem */
+            margin: 3rem 0; /* Using rem */
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4.5rem; /* Using rem */
+            height: 4.5rem; /* Using rem */
+            background: transparent;
+            border: 0.2rem solid var(--primary-color); /* Using rem */
+            border-radius: 50%;
+            font-size: 2rem; /* Using rem */
+            color: var(--primary-color);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .social-icons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-color);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .social-icons a:hover::before {
+            width: 100%;
+        }
+
+        .social-icons a:hover {
+            color: var(--bg-color);
+            transform: translateY(-0.5rem); /* Using rem */
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem; /* Using rem */
+            margin-top: 2rem; /* Using rem */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.8rem; /* Using rem */
+            background: var(--primary-color);
+            border-radius: 4rem; /* Using rem */
+            font-size: 1.6rem; /* Using rem */
+            color: var(--bg-color);
+            letter-spacing: 0.1rem; /* Using rem */
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--hover-color);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            color: var(--text-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 2rem rgba(var(--primary-color-rgb), 0.4); /* Using rem */
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 0.2rem solid var(--primary-color); /* Using rem */
+        }
+
+        .btn-outline:hover {
+            color: var(--bg-color);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(2rem); /* Using rem */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Common Section Styles */
+        section {
+            min-height: 100vh;
+            padding: var(--section-padding-desktop);
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 5rem; /* Using rem */
+            margin-bottom: 6rem; /* Using rem */
+            text-shadow: 0 0 1rem rgba(var(--primary-color-rgb), 0.3); /* Using rem */
+        }
+
+        .heading span {
+            color: var(--primary-color);
+        }
+
+        /* About Section (New styles) */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+            max-width: var(--container-width);
+            margin: 0 auto; /* Center the content */
+            padding: 2rem;
+        }
+
+        .about-img {
+            position: relative;
+            width: 100%;
+            max-width: 35rem; /* Slightly larger image for about section */
+            border-radius: 2rem; /* Consistent border-radius */
+            box-shadow: 0 0 2rem rgba(var(--primary-color-rgb), 0.3);
+            transition: var(--transition);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2rem;
+            filter: grayscale(0.2) brightness(0.9);
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            filter: grayscale(0) brightness(1);
+            transform: scale(1.02);
+            box-shadow: 0 0 3rem rgba(var(--primary-color-rgb), 0.5);
+        }
+
+        .about-text {
+            text-align: center;
+        }
+
+        .about-text h3 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            background: linear-gradient(90deg, var(--primary-color), var(--hover-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text p {
+            font-size: 1.8rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+
+        /* Services Section */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); /* Using rem */
+            gap: 2.5rem; /* Using rem */
+            padding: 2rem; /* Using rem */
+        }
+
+        .service-box {
+            background: #1e1e1e; /* Darker background for boxes */
+            padding: 3rem 2rem; /* Using rem */
+            border-radius: 2rem; /* Using rem */
+            text-align: center;
+            border: 0.1rem solid rgba(255, 255, 255, 0.1); /* Using rem */
+            box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2); /* Using rem */
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-box:hover {
+            border-color: var(--hover-color);
+            transform: translateY(-1rem); /* Using rem */
+            box-shadow: 0 0 2.5rem rgba(var(--hover-color-rgb), 0.3); /* Using rem */
+        }
+
+        .service-box i {
+            font-size: 6rem; /* Using rem */
+            color: var(--primary-color);
+            margin-bottom: 2rem; /* Using rem */
+            transition: var(--transition);
+        }
+
+        .service-box:hover i {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--hover-color);
+        }
+
+        .service-box h3 {
+            font-size: 2.5rem; /* Using rem */
+            margin-bottom: 1rem; /* Using rem */
+        }
+
+        .service-box p {
+            font-size: 1.6rem; /* Using rem */
+            color: #ccc;
+            /* Added for text reveal on hover */
+            opacity: 0;
+            transform: translateY(1rem);
+            transition: opacity 0.5s ease-in-out 0.1s, transform 0.5s ease-in-out 0.1s; /* Slight delay */
+        }
+
+        .service-box:hover p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Using rem */
+            gap: 3rem; /* Using rem */
+            padding: 2rem; /* Using rem */
+        }
+
+        .skills-box {
+            background: #1e1e1e; /* Darker background for skill boxes */
+            padding: 3rem; /* Using rem */
+            border-radius: 2rem; /* Using rem */
+            border: 0.1rem solid rgba(255, 255, 255, 0.1); /* Using rem */
+            box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2); /* Using rem */
+        }
+
+        .skills-box h3 {
+            font-size: 2.5rem; /* Using rem */
+            margin-bottom: 3rem; /* Using rem */
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .skill-bar {
+            height: 2.8rem; /* Using rem */
+            background: #333; /* Darker bar background */
+            border-radius: 0.6rem; /* Using rem */
+            margin-bottom: 2rem; /* Using rem */
+            overflow: hidden;
+            border: 0.1rem solid rgba(255, 255, 255, 0.1); /* Using rem */
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--hover-color));
+            border-radius: 0.6rem; /* Using rem */
+            position: relative;
+            animation: fillBar 2s ease-out;
+            transition: width 1.5s ease-out; /* Smoother transition for fill */
+        }
+
+        .skill-progress span {
+            position: absolute;
+            right: 1rem; /* Using rem */
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--bg-color);
+            font-size: 1.4rem; /* Using rem */
+            font-weight: 600;
+            text-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.5); /* Using rem */
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Education & Experience Sections */
+        .education-container,
+        .experience-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem; /* Using rem */
+            padding: 2rem; /* Using rem */
+        }
+
+        .education-content,
+        .experience-content {
+            position: relative;
+            padding: 2rem; /* Using rem */
+            background: #1e1e1e; /* Darker box background */
+            border-radius: 1.5rem; /* Using rem */
+            margin-bottom: 2rem; /* Using rem */
+            overflow: hidden;
+            border-left: 0.5rem solid var(--primary-color); /* Using rem */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-content:hover,
+        .experience-content:hover {
+            transform: translateX(1rem); /* Using rem */
+            box-shadow: 0 0 2rem rgba(var(--primary-color-rgb), 0.2); /* Using rem */
+        }
+
+        .year {
+            font-size: 1.6rem; /* Using rem */
+            color: var(--secondary-color);
+            margin-bottom: 1rem; /* Using rem */
+            font-weight: 500;
+        }
+
+        .year i {
+            margin-right: 0.5rem; /* Using rem */
+        }
+
+        .education-content h3,
+        .experience-content h3 {
+            font-size: 2.4rem; /* Using rem */
+            margin-bottom: 1rem; /* Using rem */
+            color: var(--text-color);
+        }
+
+        .education-content p,
+        .experience-content p {
+            font-size: 1.6rem; /* Using rem */
+            color: #bdbdbd;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr)); /* Using rem */
+            gap: 3rem; /* Using rem */
+            padding: 2rem; /* Using rem */
+        }
+
+        .project-box {
+            position: relative;
+            border-radius: 2rem; /* Using rem */
+            box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3); /* Using rem */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; /* Ensure content stacks properly if needed */
+            transition: var(--transition);
+        }
+
+        .project-box img {
+            width: 100%; /* Make image responsive */
+            height: 25rem; /* Using rem - fixed height for consistency in grid */
+            object-fit: cover; /* Cover the area */
+            transition: transform 0.5s ease;
+        }
+
+        .project-box:hover img {
+            transform: scale(1.1); /* Zoom effect on image hover */
+        }
+
+        .project-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.1), var(--primary-color)); /* Gradient overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 2rem; /* Using rem */
+            transform: translateY(100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-box:hover .project-layer {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-layer h4 {
+            font-size: 2.8rem; /* Using rem */
+            margin-bottom: 1rem; /* Using rem */
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem; /* Using rem */
+        }
+
+        .project-layer p {
+            font-size: 1.6rem; /* Using rem */
+            margin-bottom: 1.5rem; /* Using rem */
+            color: #eee;
+            /* Added for text reveal within project layer */
+            opacity: 0;
+            transform: translateY(1rem);
+            transition: opacity 0.5s ease-in-out 0.2s, transform 0.5s ease-in-out 0.2s; /* Delayed transition */
+        }
+
+        .project-box:hover .project-layer p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem; /* Using rem */
+            margin-bottom: 2rem; /* Using rem */
+        }
+
+        .project-tech span {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem; /* Using rem */
+            border-radius: 0.5rem; /* Using rem */
+            font-size: 1.4rem; /* Using rem */
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* Using rem */
+        }
+
+        .project-tech span i {
+            font-size: 1.6rem; /* Using rem */
+            color: var(--secondary-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 2rem; /* Using rem */
+        }
+
+        .project-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 5rem; /* Using rem */
+            height: 5rem; /* Using rem */
+            background: var(--text-color);
+            border-radius: 50%;
+            color: var(--primary-color);
+            font-size: 2.2rem; /* Using rem */
+            transition: var(--transition);
+        }
+
+        .project-links a:hover {
+            background: var(--hover-color);
+            color: var(--text-color);
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Using rem */
+            gap: 4rem; /* Using rem */
+            padding: 2rem; /* Using rem */
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem; /* Using rem */
+        }
+
+        .info-box {
+            display: flex;
+            align-items: center;
+            gap: 2rem; /* Using rem */
+            padding: 2rem; /* Using rem */
+            background: #1e1e1e; /* Darker info box background */
+            border-radius: 1.5rem; /* Using rem */
+            border: 0.1rem solid rgba(255, 255, 255, 0.1); /* Using rem */
+            transition: var(--transition);
+        }
+
+        .info-box:hover {
+            background: #242424;
+            transform: translateY(-0.8rem); /* Using rem */
+            box-shadow: 0 0 2rem rgba(var(--primary-color-rgb), 0.2); /* Using rem */
+        }
+
+        .info-box i {
+            font-size: 3.5rem; /* Using rem */
+            color: var(--primary-color);
+        }
+
+        .info-box h3 {
+            font-size: 2.2rem; /* Using rem */
+            margin-bottom: 0.5rem; /* Using rem */
+            color: var(--text-color);
+        }
+
+        .info-box p {
+            font-size: 1.7rem; /* Using rem */
+            color: #bdbdbd;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; /* Using rem */
+        }
+
+        .input-box {
+            display: flex;
+            gap: 2rem; /* Using rem */
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1.8rem; /* Using rem */
+            font-size: 1.7rem; /* Using rem */
+            color: var(--text-color);
+            background: #1e1e1e; /* Darker input background */
+            border-radius: 0.8rem; /* Using rem */
+            border: 0.1rem solid rgba(255, 255, 255, 0.1); /* Using rem */
+            transition: var(--transition);
+        }
+
+        .contact-form textarea {
+            min-height: 15rem; /* Using rem */
+            resize: vertical;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #aaa;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 1rem rgba(var(--primary-color-rgb), 0.4); /* Using rem */
+            background: #242424; /* Slightly lighter on focus */
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 2rem 9%; /* Using rem */
+            background: #1a1a1a;
+            border-top: 0.1rem solid rgba(255, 255, 255, 0.05); /* Using rem */
+        }
+
+        .footer-text p {
+            font-size: 1.6rem; /* Using rem */
+            color: #bbb;
+        }
+
+        .footer-iconTop a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem; /* Using rem */
+            background: var(--primary-color);
+            border-radius: 0.8rem; /* Using rem */
+            transition: var(--transition);
+        }
+
+        .footer-iconTop a i {
+            font-size: 2.4rem; /* Using rem */
+            color: var(--bg-color);
+        }
+
+        .footer-iconTop a:hover {
+            box-shadow: 0 0 1.5rem rgba(var(--primary-color-rgb), 0.4); /* Using rem */
+            background: var(--hover-color);
+        }
+
+        /* Media Queries (Refined with rem and clearer breakpoints) */
+
+        /* Large devices (desktops, 1200px and up) */
+        @media (min-width: 1201px) {
+            /* No specific font-size change needed as html default is 62.5% */
+        }
+
+        /* Desktops and large tablets (992px to 1200px) */
+        @media (max-width: 1200px) {
+            html {
+                font-size: 58%; /* Adjust base font for slightly smaller screens */
+            }
+            header {
+                padding: 2rem 5%; /* Using rem */
+            }
+            header.sticky {
+                padding: 1.5rem 5%; /* Using rem */
+            }
+            section {
+                padding: var(--section-padding-tablet);
+            }
+            .footer {
+                padding: 2rem 5%; /* Using rem */
+            }
+        }
+
+        /* Tablets (landscape and portrait, 768px to 991px) */
+        @media (max-width: 991px) {
+            html {
+                font-size: 55%; /* Further adjustment for tablets */
+            }
+            .home-content h1 {
+                font-size: 5.5rem; /* Adjust home heading */
+            }
+            .home-content h3 {
+                font-size: 3rem; /* Adjust home sub-heading */
+            }
+            .services-container,
+            .skills-container,
+            .projects-container,
+            .contact-container {
+                grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr)); /* Allow wrapping at 28rem */
+                gap: 2.5rem; /* Using rem */
+                padding: 2rem; /* Using rem */
+            }
+            .heading {
+                font-size: 4.5rem; /* Adjust section headings */
+            }
+            .about-content {
+                flex-direction: column; /* Stack on smaller screens */
+                text-align: center;
+            }
+            .about-text {
+                order: 2; /* Text below image */
+            }
+            .about-img {
+                order: 1; /* Image above text */
+                max-width: 30rem;
+            }
+        }
+
+        /* Mobile devices (landscape and portrait, 480px to 767px) */
+        @media (max-width: 767px) {
+            html {
+                font-size: 50%; /* Make everything smaller for smaller devices */
+            }
+            .menu-icon {
+                display: block; /* Show hamburger icon on small screens */
+            }
+
+            nav {
+                display: none; /* Hide nav by default on small screens */
+                flex-direction: column;
+                align-items: center;
+                background: rgba(18, 18, 18, 0.98); /* Use the new darker bg */
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 2rem 0; /* Using rem */
+                border-top: 0.1rem solid rgba(255, 255, 255, 0.1); /* Using rem */
+                transition: all 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            nav.active {
+                display: flex; /* Show nav when active */
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            body.no-scroll {
+                overflow: hidden;
+            }
+
+            .home {
+                flex-direction: column-reverse; /* Image above text on small screens */
+                text-align: center;
+                padding: var(--section-padding-mobile);
+            }
+            .home-content {
+                max-width: 100%; /* Allow content to use full width */
+                margin-bottom: 2rem; /* Spacing below content */
+            }
+            .home-content h1 {
+                font-size: 4.5rem; /* Smaller heading on mobile */
+            }
+            .home-content h3 {
+                font-size: 2.8rem; /* Smaller sub-heading on mobile */
+            }
+            .home-img {
+                max-width: 25rem; /* Smaller max width for image on mobile */
+                margin-top: 2rem; /* Using rem */
+            }
+            .home-img img {
+                width: 100%; /* Remains 100% of its (smaller) container */
+                border-width: 0.4rem; /* Slightly thinner border */
+            }
+
+            .social-icons,
+            .cta-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .cta-buttons {
+                flex-direction: column; /* Stack buttons on small screens */
+                gap: 1.5rem; /* Using rem */
+            }
+            .btn {
+                width: 100%; /* Make buttons full width when stacked */
+                max-width: 25rem; /* Limit max width for buttons */
+            }
+
+            .heading {
+                font-size: 3.5rem; /* Smaller heading on mobile */
+                margin-bottom: 4rem; /* Using rem */
+            }
+
+            /* Stack grid containers on mobile */
+            .services-container,
+            .skills-container,
+            .projects-container,
+            .contact-container {
+                grid-template-columns: 1fr; /* Single column */
+                gap: 3rem; /* Using rem */
+                padding: 1.5rem; /* Using rem */
+            }
+
+            .input-box {
+                flex-direction: column; /* Stack input fields */
+                gap: 1.5rem; /* Using rem */
+            }
+            .contact-info {
+                gap: 2rem; /* Using rem */
+            }
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem; /* Using rem */
+            }
+            .footer-iconTop {
+                margin-top: 1rem; /* Using rem */
+            }
+
+            .about-content {
+                padding: var(--section-padding-mobile); /* Adjust padding for mobile */
+            }
+            .about-text h3 {
+                font-size: 3rem; /* Smaller heading for about on mobile */
+            }
+            .about-text p {
+                font-size: 1.6rem; /* Smaller paragraph text for about on mobile */
+            }
+        }
+
+        /* Very small mobile devices (less than 480px, e.g., older phones) */
+        @media (max-width: 479px) {
+            html {
+                font-size: 45%; /* Even smaller base font for tiny screens */
+            }
+            .home-content h1 {
+                font-size: 3.8rem;
+            }
+            .home-content h3 {
+                font-size: 2.2rem;
+            }
+            .home-img {
+                max-width: 20rem; /* Even smaller image */
+            }
+            .heading {
+                font-size: 3rem;
+            }
+            .btn {
+                font-size: 1.5rem; /* Slightly smaller button text */
+            }
+            .about-text h3 {
+                font-size: 2.5rem;
+            }
+            .about-text p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-transition-overlay" id="pageTransitionOverlay"></div>
+
+    <header>
+        <a href="#home" class="logo">Ernest.</a>
+        <i class="fas fa-bars menu-icon" id="menu-icon"></i>
+        <nav id="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section class="home" id="home">
+            <div class="home-content">
+                <h3 class="fade-in-text">Hello, I'm</h3>
+                <h1 class="fade-in-text">Ernest Tafadzwa Maenda</h1>
+                <h3 class="fade-in-text">And I'm a <span class="typing"></span></h3>
+                <p class="fade-in-text">A passionate Software Developer crafting innovative and efficient digital solutions. I specialize in building robust applications and engaging web experiences.</p>
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/yourprofile" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                </div>
+                <div class="cta-buttons">
+                    <a href="/path/to/your/cv.pdf" class="btn" download>Download CV</a>
+                    <a href="#contact" class="btn btn-outline">Let's Talk</a>
+                </div>
+            </div>
+            <div class="home-img">
+                <img src="https://via.placeholder.com/300" alt="Ernest Tafadzwa Maenda's Profile Picture">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <h2 class="heading">About <span>Me</span></h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://via.placeholder.com/600x400/e44d26/f0f0f0?text=About+Me+Image" alt="About Me">
+                </div>
+                <div class="about-text">
+                    <h3 class="fade-in-text">Dedicated Software Developer & UI/UX Enthusiast</h3>
+                    <p class="fade-in-text">
+                        My journey into software development began with a fascination for how technology solves real-world problems and enhances daily life. I thrive on bringing creative ideas to fruition through clean, efficient, and user-centric code. My expertise lies in crafting engaging front-end experiences and robust back-end systems.
+                    </p>
+                    <p class="fade-in-text">
+                        I am constantly exploring new technologies and methodologies to stay at the forefront of the industry. My passion extends beyond just writing code; I am committed to continuous learning, collaborative problem-solving, and building impactful digital solutions. I believe in writing code that is not only functional but also maintainable and scalable.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn">Connect With Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <h2 class="heading">My <span>Services</span></h2>
+            <div class="services-container">
+                <div class="service-box">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Building responsive and high-performance web applications using modern frameworks and best practices.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile App Development</h3>
+                    <p>Developing native and cross-platform mobile applications for iOS and Android.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-database"></i>
+                    <h3>Backend Development</h3>
+                    <p>Designing and implementing scalable, secure, and efficient server-side logic and databases.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-palette"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Creating intuitive and engaging user interfaces with a focus on user experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills" id="skills">
+            <h2 class="heading">My <span>Skills</span></h2>
+            <div class="skills-container">
+                <div class="skills-box">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"><span>90%</span></div>
+                    </div>
+                    <p>HTML, CSS, JavaScript, React, Vue.js</p>
+                </div>
+                <div class="skills-box">
+                    <h3>Backend Development</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"><span>85%</span></div>
+                    </div>
+                    <p>Node.js, Python (Django/Flask), PHP (Laravel), REST APIs</p>
+                </div>
+                <div class="skills-box">
+                    <h3>Databases</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"><span>80%</span></div>
+                    </div>
+                    <p>MySQL, PostgreSQL, MongoDB, SQL Server</p>
+                </div>
+                <div class="skills-box">
+                    <h3>Tools & Others</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"><span>75%</span></div>
+                    </div>
+                    <p>Git, Docker, AWS (Basics), Figma, Photoshop</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects" id="projects">
+            <h2 class="heading">My Latest <span>Projects</span></h2>
+            <div class="projects-container">
+                <div class="project-box">
+                    <img src="https://via.placeholder.com/600x400/FF5733/FFFFFF?text=E-Commerce+Site" alt="E-Commerce Website Project">
+                    <div class="project-layer">
+                        <h4>E-Commerce Platform</h4>
+                        <p>A full-stack e-commerce solution with user authentication, product management, and payment gateway integration.</p>
+                        <div class="project-tech">
+                            <span><i class="fab fa-react"></i> React</span>
+                            <span><i class="fab fa-node-js"></i> Node.js</span>
+                            <span><i class="fas fa-database"></i> MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" target="_blank" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-box">
+                    <img src="https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Task+Manager" alt="Task Manager Application Project">
+                    <div class="project-layer">
+                        <h4>Task Management App</h4>
+                        <p>A responsive web application for managing tasks, with features like task categorization and due dates.</p>
+                        <div class="project-tech">
+                            <span><i class="fab fa-vuejs"></i> Vue.js</span>
+                            <span><i class="fab fa-php"></i> Laravel</span>
+                            <span><i class="fas fa-database"></i> MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" target="_blank" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-box">
+                    <img src="https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Portfolio+Website" alt="Personal Portfolio Website Project">
+                    <div class="project-layer">
+                        <h4>Personal Portfolio Site</h4>
+                        <p>This very website, showcasing my skills, projects, and professional background.</p>
+                        <div class="project-tech">
+                            <span><i class="fab fa-html5"></i> HTML</span>
+                            <span><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span><i class="fab fa-js"></i> JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" target="_blank" aria-label="GitHub Repo"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="education" id="education">
+            <h2 class="heading">My <span>Education</span></h2>
+            <div class="education-container">
+                <div class="education-content">
+                    <span class="year"><i class="fas fa-calendar-alt"></i> 2018 - 2022</span>
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <p>University Name, City, Country</p>
+                    <p>Focused on software engineering, data structures, algorithms, and web technologies.</p>
+                </div>
+                <div class="education-content">
+                    <span class="year"><i class="fas fa-calendar-alt"></i> 2017 - 2018</span>
+                    <h3>High School Diploma</h3>
+                    <p>High School Name, City, Country</p>
+                    <p>Achieved top grades in Mathematics, Physics, and Computer Studies.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience" id="experience">
+            <h2 class="heading">My <span>Experience</span></h2>
+            <div class="experience-container">
+                <div class="experience-content">
+                    <span class="year"><i class="fas fa-calendar-alt"></i> 2023 - Present</span>
+                    <h3>Software Developer</h3>
+                    <p>Tech Solutions Inc., City, Country</p>
+                    <ul>
+                        <li>Developed and maintained full-stack web applications using Node.js and React.</li>
+                        <li>Implemented robust RESTful APIs to support various client-side functionalities.</li>
+                        <li>Collaborated with cross-functional teams to define, design, and ship new features.</li>
+                    </ul>
+                </div>
+                <div class="experience-content">
+                    <span class="year"><i class="fas fa-calendar-alt"></i> 2022 - 2023</span>
+                    <h3>Junior Web Developer</h3>
+                    <p>Creative Digital Agency, City, Country</p>
+                    <ul>
+                        <li>Assisted in the development of client websites using HTML, CSS, and JavaScript.</li>
+                        <li>Contributed to database design and management for small to medium-sized projects.</li>
+                        <li>Participated in daily stand-ups and agile development sprints.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2 class="heading">Contact <span>Me</span></h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-box">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>your.email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+263 77X XXX XXX</p>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Harare, Zimbabwe</p>
+                        </div>
+                    </div>
+                </div>
+                <form action="#" class="contact-form">
+                    <div class="input-box">
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="tel" placeholder="Mobile Number">
+                        <input type="text" placeholder="Email Subject" required>
+                    </div>
+                    <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>&copy; 2025 Ernest Tafadzwa Maenda. All Rights Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Typing Effect ---
+            const typingElement = document.querySelector('.typing');
+            // Ensure this element exists before trying to manipulate it
+            if (typingElement) {
+                const words = ["Software Developer", "Web Designer", "Backend Developer", "UI/UX Enthusiast"]; // Add more words here
+                let wordIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                const typingSpeed = 150; // Milliseconds per character
+                const deletingSpeed = 100; // Milliseconds per character
+                const delayBetweenWords = 1500; // Milliseconds to wait before typing next word
+
+                function typeWriter() {
+                    const currentWord = words[wordIndex];
+                    if (isDeleting) {
+                        // Deleting text
+                        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        // Typing text
+                        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    let currentTypingSpeed = isDeleting ? deletingSpeed : typingSpeed;
+
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        // Word fully typed, start deleting after a delay
+                        currentTypingSpeed = delayBetweenWords;
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        // Word fully deleted, move to next word
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        currentTypingSpeed = typingSpeed;
+                    }
+
+                    setTimeout(typeWriter, currentTypingSpeed);
+                }
+
+                // Start the typing effect after a short delay
+                setTimeout(typeWriter, 500);
+            } else {
+                console.warn("Typing element (.typing) not found. Typing effect will not work.");
+            }
+
+
+            // --- Header Sticky Effect ---
+            const header = document.querySelector('header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    header.classList.toggle('sticky', window.scrollY > 0);
+                });
+            }
+
+
+            // --- Active Nav Link on Scroll ---
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('header nav a');
+
+            if (sections.length && navLinks.length) {
+                window.addEventListener('scroll', () => {
+                    let current = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+                        // A common strategy is to make the active link highlight when
+                        // the section is sufficiently scrolled into view. Adjust offset as needed
+                        if (scrollY >= sectionTop - sectionHeight / 3) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+
+                    navLinks.forEach(a => {
+                        a.classList.remove('active');
+                        // Check if the href matches the current section ID
+                        if (a.getAttribute('href') && a.getAttribute('href').includes(current)) {
+                            a.classList.add('active');
+                        }
+                    });
+                });
+            }
+
+            // --- Mobile Navigation Toggle ---
+            const menuIcon = document.getElementById('menu-icon');
+            const navbar = document.getElementById('navbar');
+            const body = document.body;
+
+            if (menuIcon && navbar && body) {
+                menuIcon.addEventListener('click', () => {
+                    navbar.classList.toggle('active');
+                    // Toggle between fa-bars and fa-times for the icon
+                    const icon = menuIcon.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-bars');
+                        icon.classList.toggle('fa-times');
+                    }
+                    body.classList.toggle('no-scroll'); // Prevent body scroll when nav is open
+                });
+
+                // Close mobile nav when a link is clicked
+                navbar.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navbar.classList.remove('active');
+                        const icon = menuIcon.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                        body.classList.remove('no-scroll');
+                    });
+                });
+            }
+
+            // --- Page Transition Logic ---
+            const pageTransitionOverlay = document.getElementById('pageTransitionOverlay');
+            // Target relevant links for page transitions
+            const transitionLinks = document.querySelectorAll('a[href]:not([href^="#"]):not([href^="javascript"]):not([download])');
+
+            if (pageTransitionOverlay && transitionLinks.length > 0) {
+                transitionLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        const href = this.getAttribute('href');
+
+                        // Check if it's an external link or a link that should cause a full page load
+                        // We exclude internal # section links and download links
+                        if (href && !href.startsWith('#') && !this.hasAttribute('download')) {
+                            e.preventDefault(); // Prevent default navigation
+                            pageTransitionOverlay.classList.add('is-active'); // Show overlay
+
+                            // After the transition, navigate
+                            setTimeout(() => {
+                                window.location.href = href;
+                            }, 500); // Match this with the CSS transition duration
+                        }
+                    });
+                });
+
+                // Ensure the overlay is removed when the page loads (e.g., first visit, or back button)
+                window.addEventListener('load', () => {
+                    if (pageTransitionOverlay.classList.contains('is-active')) {
+                        pageTransitionOverlay.classList.remove('is-active');
+                    }
+                    // Temporarily disable transition for initial load to prevent flash
+                    pageTransitionOverlay.style.transition = 'none';
+                    setTimeout(() => {
+                        pageTransitionOverlay.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s';
+                    }, 10); // Small delay to re-enable
+                });
+            }
+
+            // --- Scroll Reveal Animations ---
+            // Make sure ScrollReveal library is loaded before this part.
+            // If you remove the CDN, this part will throw an error.
+            if (typeof ScrollReveal !== 'undefined') {
+                ScrollReveal({
+                    reset: true, // Animations reset on scroll back up
+                    distance: '8rem', // How far elements move (using rem)
+                    duration: 2000, // Duration of the animation
+                    delay: 200 // Delay before animation starts
+                });
+
+                // Apply animations to various elements (using rem distances)
+                ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
+                ScrollReveal().reveal('.home-img, .services-container, .projects-container, .contact-container, .footer', { origin: 'bottom' });
+                ScrollReveal().reveal('.home-content h1, .skills-box', { origin: 'left' });
+                ScrollReveal().reveal('.home-content p, .contact-form', { origin: 'right' });
+                ScrollReveal().reveal('.social-icons a, .cta-buttons .btn', { origin: 'bottom', interval: 100 }); // Staggered reveal for icons/buttons
+                // Refined reveals for specific text elements
+                ScrollReveal().reveal('.fade-in-text', { origin: 'top', interval: 150, afterReveal: (el) => { el.classList.add('revealed'); } });
+                ScrollReveal().reveal('.service-box, .project-box, .education-content, .experience-content, .info-box', { origin: 'bottom', interval: 150 }); // Staggered reveal for boxes
+                // More specific text reveals for about section
+                ScrollReveal().reveal('.about-img', { origin: 'left', distance: '10rem', delay: 400 });
+                ScrollReveal().reveal('.about-text h3, .about-text p, .about-text .btn', { origin: 'right', distance: '10rem', interval: 100, delay: 500 });
+                ScrollReveal().reveal('.education-content h3, .education-content p', { origin: 'right', interval: 80, delay: 400 });
+                ScrollReveal().reveal('.experience-content h3, .experience-content p', { origin: 'left', interval: 80, delay: 400 });
+
+            } else {
+                console.warn("ScrollReveal.js not loaded. Animations will not work.");
+            }
+        });
+    </script>
+</body>
+</html>
