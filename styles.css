@@ -1,0 +1,73 @@
+/* Styles for Experience Card */
+.experience-container {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.experience-content {
+    background-color: #2a2a2a;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
+    color: var(--text-color, #f0f0f0);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-content:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0 2rem rgba(255, 77, 38, 0.6);
+}
+
+.experience-content .year {
+    font-size: 1.6rem;
+    color: #2ecc71;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    display: block;
+}
+
+.experience-content h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+    color: var(--text-color, #f0f0f0);
+}
+
+.experience-content p {
+    font-size: 1.6rem;
+    color: #bdbdbd;
+    margin-bottom: 1rem;
+}
+
+.experience-content ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+    color: #ccc;
+    font-size: 1.5rem;
+}
+
+/* Smaller card style based on project-box */
+.experience-content.card {
+    max-width: 30rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+    background-color: #2a2a2a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-content.card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0 1.5rem rgba(255, 77, 38, 0.7);
+}
+
+@media (max-width: 767px) {
+    .experience-container {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    .experience-content {
+        padding: 1.5rem;
+    }
+}

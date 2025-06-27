@@ -558,52 +558,38 @@
         }
 
         /* Education & Experience Sections */
-        .education-container,
-        .experience-container {
+        .education-container {
+            position: relative;
+            height: 60rem; /* Fixed height to show 3 cards approx */
+            overflow: hidden;
+            padding: 2rem; /* Using rem */
+            border-radius: 1.5rem; /* Using rem */
+            background: #1e1e1e; /* Darker box background */
+            border-left: 0.5rem solid var(--primary-color); /* Using rem */
+        }
+
+        .education-carousel {
             display: flex;
             flex-direction: column;
             gap: 3rem; /* Using rem */
-            padding: 2rem; /* Using rem */
+            transition: transform 0.5s ease;
         }
 
-        .education-content,
-        .experience-content {
+        .education-content {
             position: relative;
             padding: 2rem; /* Using rem */
-            background: #1e1e1e; /* Darker box background */
+            background: #2a2a2a; /* Slightly lighter for cards */
             border-radius: 1.5rem; /* Using rem */
-            margin-bottom: 2rem; /* Using rem */
-            overflow: hidden;
-            border-left: 0.5rem solid var(--primary-color); /* Using rem */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .education-content:hover,
-        .experience-content:hover {
-            transform: translateX(1rem); /* Using rem */
-            box-shadow: 0 0 2rem rgba(var(--primary-color-rgb), 0.2); /* Using rem */
-        }
-
-        .year {
-            font-size: 1.6rem; /* Using rem */
-            color: var(--secondary-color);
-            margin-bottom: 1rem; /* Using rem */
-            font-weight: 500;
-        }
-
-        .year i {
-            margin-right: 0.5rem; /* Using rem */
-        }
-
-        .education-content h3,
-        .experience-content h3 {
-            font-size: 2.4rem; /* Using rem */
-            margin-bottom: 1rem; /* Using rem */
+            box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
             color: var(--text-color);
         }
 
-        .education-content p,
-        .experience-content p {
+        .education-content h3 {
+            font-size: 2.4rem; /* Using rem */
+            margin-bottom: 1rem; /* Using rem */
+        }
+
+        .education-content p {
             font-size: 1.6rem; /* Using rem */
             color: #bdbdbd;
         }
@@ -1095,19 +1081,17 @@
                 <h1 class="fade-in-text">Ernest Tafadzwa Maenda</h1>
                 <h3 class="fade-in-text">And I'm a <span class="typing"></span></h3>
                 <p class="fade-in-text">A passionate Software Developer crafting innovative and efficient digital solutions. I specialize in building robust applications and engaging web experiences.</p>
-                <div class="social-icons">
-                    <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/yourprofile" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
-                </div>
+<div class="social-icons">
+    <a href="https://www.linkedin.com/in/ernest-tafadzwa-maenda-39a801347/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+</div>
                 <div class="cta-buttons">
                     <a href="/path/to/your/cv.pdf" class="btn" download>Download CV</a>
                     <a href="#contact" class="btn btn-outline">Let's Talk</a>
                 </div>
             </div>
             <div class="home-img">
-                <img src="https://via.placeholder.com/300" alt="Ernest Tafadzwa Maenda's Profile Picture">
+<img src="images/WhatsApp Image 2025-05-16 at 10.35.46 AM (1).jpeg" alt="Ernest Tafadzwa Maenda's Profile Picture">
             </div>
         </section>
 
@@ -1119,12 +1103,12 @@
                     <img src="https://via.placeholder.com/600x400/e44d26/f0f0f0?text=About+Me+Image" alt="About Me">
                 </div>
                 <div class="about-text">
-                    <h3 class="fade-in-text">Dedicated Software Developer & UI/UX Enthusiast</h3>
+                    <h3 class="fade-in-text">About Me</h3>
                     <p class="fade-in-text">
-                        My journey into software development began with a fascination for how technology solves real-world problems and enhances daily life. I thrive on bringing creative ideas to fruition through clean, efficient, and user-centric code. My expertise lies in crafting engaging front-end experiences and robust back-end systems.
+                        What drew me to software development was the profound ability of technology to solve real-world problems and enhance daily life. My experience at an Uncommon Bootcamp solidified this passion, showing me the power of bringing creative ideas to fruition through clean, efficient, and user-centric code.
                     </p>
                     <p class="fade-in-text">
-                        I am constantly exploring new technologies and methodologies to stay at the forefront of the industry. My passion extends beyond just writing code; I am committed to continuous learning, collaborative problem-solving, and building impactful digital solutions. I believe in writing code that is not only functional but also maintainable and scalable.
+                        I thrive on developing both engaging front-end experiences and robust back-end systems. My commitment extends beyond just coding; I am constantly exploring new technologies to build impactful digital solutions that are highly functional, maintainable, and scalable. I believe in the power of collaboration and continuous learning to drive innovation.
                     </p>
                     <div class="cta-buttons">
                         <a href="#contact" class="btn">Connect With Me</a>
@@ -1155,6 +1139,11 @@
                     <i class="fas fa-palette"></i>
                     <h3>UI/UX Design</h3>
                     <p>Creating intuitive and engaging user interfaces with a focus on user experience.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Digital Marketing</h3>
+                    <p>Providing strategic digital marketing solutions to enhance brand visibility and engagement.</p>
                 </div>
             </div>
         </section>
@@ -1190,6 +1179,13 @@
                     </div>
                     <p>Git, Docker, AWS (Basics), Figma, Photoshop</p>
                 </div>
+                <div class="skills-box">
+                    <h3>Additional Skills</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"><span>85%</span></div>
+                    </div>
+                    <p>Communication, Team Work, Website and Mobile Design, Digital Marketing, Problem Solving</p>
+                </div>
             </div>
         </section>
 
@@ -1197,9 +1193,9 @@
             <h2 class="heading">My Latest <span>Projects</span></h2>
             <div class="projects-container">
                 <div class="project-box">
-                    <img src="https://via.placeholder.com/600x400/FF5733/FFFFFF?text=E-Commerce+Site" alt="E-Commerce Website Project">
+                    <img src="images/Screenshot (527).png" alt="E-Commerce Website Project">
                     <div class="project-layer">
-                        <h4>E-Commerce Platform</h4>
+                        <h4>E-Commerce Website</h4>
                         <p>A full-stack e-commerce solution with user authentication, product management, and payment gateway integration.</p>
                         <div class="project-tech">
                             <span><i class="fab fa-react"></i> React</span>
@@ -1252,17 +1248,83 @@
         <section class="education" id="education">
             <h2 class="heading">My <span>Education</span></h2>
             <div class="education-container">
-                <div class="education-content">
-                    <span class="year"><i class="fas fa-calendar-alt"></i> 2018 - 2022</span>
-                    <h3>Bachelor of Science in Computer Science</h3>
-                    <p>University Name, City, Country</p>
-                    <p>Focused on software engineering, data structures, algorithms, and web technologies.</p>
-                </div>
-                <div class="education-content">
-                    <span class="year"><i class="fas fa-calendar-alt"></i> 2017 - 2018</span>
-                    <h3>High School Diploma</h3>
-                    <p>High School Name, City, Country</p>
-                    <p>Achieved top grades in Mathematics, Physics, and Computer Studies.</p>
+                <div class="education-carousel" id="educationCarousel">
+                    <div class="education-content">
+                        <h3>Certificate: Application Development using Microservices and Serverless</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Developing AI Application with Python and Flask</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Developing Backend Apps with Node.js and Express</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Developing Front End Apps with React</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Digital Marketing</h3>
+                        <p>HubSpot Academy</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Django Application Development with SQL and Databases</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Generative AI</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Getting Started with Git and GitHub</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Google Analytics Certification</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Introduction to Cloud Computing</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Introduction to Containers w/Docker, Kubernetes and OpenShift</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Introduction to HTML, CSS and JavaScript</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Python for Data Science, AI and Development</h3>
+                        <p>IBM</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Crash Course on Python</h3>
+                        <p></p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Data Analysis with Python</h3>
+                        <p></p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Fundamentals of Digital Marketing</h3>
+                        <p>Google</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Google UX Design</h3>
+                        <p>Google</p>
+                    </div>
+                    <div class="education-content">
+                        <h3>Certificate: Foundations of User Experience (UX) Design</h3>
+                        <p></p>
+                    </div>
+                    <div class="education-content">
+                        <h3>IBM Full Stack Software Developer</h3>
+                        <p>IBM</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1270,26 +1332,14 @@
         <section class="experience" id="experience">
             <h2 class="heading">My <span>Experience</span></h2>
             <div class="experience-container">
-                <div class="experience-content">
-                    <span class="year"><i class="fas fa-calendar-alt"></i> 2023 - Present</span>
-                    <h3>Software Developer</h3>
-                    <p>Tech Solutions Inc., City, Country</p>
-                    <ul>
-                        <li>Developed and maintained full-stack web applications using Node.js and React.</li>
-                        <li>Implemented robust RESTful APIs to support various client-side functionalities.</li>
-                        <li>Collaborated with cross-functional teams to define, design, and ship new features.</li>
-                    </ul>
-                </div>
-                <div class="experience-content">
-                    <span class="year"><i class="fas fa-calendar-alt"></i> 2022 - 2023</span>
-                    <h3>Junior Web Developer</h3>
-                    <p>Creative Digital Agency, City, Country</p>
-                    <ul>
-                        <li>Assisted in the development of client websites using HTML, CSS, and JavaScript.</li>
-                        <li>Contributed to database design and management for small to medium-sized projects.</li>
-                        <li>Participated in daily stand-ups and agile development sprints.</li>
-                    </ul>
-                </div>
+<div class="experience-content card smaller-card">
+    <span class="year"><i class="fas fa-calendar-alt"></i> 20 January 2025 - Present</span>
+    <h3>Junior Instructor (Voluntary Work)</h3>
+    <p>Uncommon Bootcamp</p>
+    <ul>
+        <li>Teaching youth coding skills as a junior instructor.</li>
+    </ul>
+</div>
             </div>
         </section>
 
@@ -1297,20 +1347,20 @@
             <h2 class="heading">Contact <span>Me</span></h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <div class="info-box">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>your.email@example.com</p>
-                        </div>
-                    </div>
-                    <div class="info-box">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+263 77X XXX XXX</p>
-                        </div>
-                    </div>
+<div class="info-box">
+    <i class="fas fa-envelope"></i>
+    <div>
+        <h3>Email</h3>
+        <p>ernesttafadzwamaenda284@gmail.com</p>
+    </div>
+</div>
+<div class="info-box">
+    <i class="fas fa-phone-alt"></i>
+    <div>
+        <h3>Phone</h3>
+        <p>+263713118654 / +263787359355</p>
+    </div>
+</div>
                     <div class="info-box">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
@@ -1531,3 +1581,4 @@
     </script>
 </body>
 </html>
+
