@@ -47,27 +47,48 @@
     font-size: 1.5rem;
 }
 
-/* Smaller card style based on project-box */
-.experience-content.card {
-    max-width: 30rem;
-    padding: 1.5rem;
+.experience-card {
+    max-width: 60rem;
+    padding: 2rem;
     border-radius: 1.5rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
     background-color: #2a2a2a;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem;
 }
 
-.experience-content.card:hover {
+.experience-card:hover {
     transform: translateY(-0.5rem);
-    box-shadow: 0 0 1.5rem rgba(255, 77, 38, 0.7);
+    box-shadow: 0 0 2rem rgba(255, 77, 38, 0.6);
+}
+
+/* Added styles for project box image fade on hover or focus */
+.project-box:hover img,
+.project-box:focus-within img {
+    opacity: 0.5; /* Fade effect on hover or focus within */
+    transition: opacity 0.3s ease;
+}
+
+/* Hamburger menu icon */
+.menu-icon {
+    font-size: 2.8rem; /* Using rem */
+    color: var(--text-color);
+    cursor: pointer;
+    display: none; /* Hidden by default on larger screens */
+    z-index: 101; /* Ensure it's above the header and nav */
+}
+
+@media (min-width: 768px) {
+    .menu-icon {
+        display: none !important; /* Force hide on medium and larger screens */
+    }
 }
 
 @media (max-width: 767px) {
-    .experience-container {
-        max-width: 100%;
-        padding: 1rem;
-    }
-    .experience-content {
-        padding: 1.5rem;
+    .menu-icon {
+        display: block !important; /* Force show on small screens */
     }
 }
+
+/* Show hamburger menu icon only on small screens */
+/* Removed redundant media query */
