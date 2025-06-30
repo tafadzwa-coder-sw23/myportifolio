@@ -92,3 +92,61 @@
 
 /* Show hamburger menu icon only on small screens */
 /* Removed redundant media query */
+
+/* Light mode overrides */
+body.light-mode {
+    --bg-color: #f0f0f0;
+    --text-color: #121212;
+    --primary-color: #e44d26;
+    --primary-color-rgb: 228, 77, 38;
+    --secondary-color: #2ecc71;
+    --hover-color: #ff6f4f;
+}
+
+body.light-mode header {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(1rem);
+    color: var(--text-color);
+}
+
+body.light-mode nav a {
+    color: var(--text-color);
+}
+
+body.light-mode nav a.active,
+body.light-mode nav a:hover {
+    color: var(--primary-color);
+}
+
+body.light-mode .btn {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+body.light-mode .btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+body.light-mode .btn-outline:hover {
+    color: var(--bg-color);
+    background: var(--primary-color);
+}
+
+body.light-mode .experience-content {
+    background: #e0e0e0;
+    color: var(--text-color);
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .education-container {
+    background: #e0e0e0;
+    border-left-color: var(--primary-color);
+}
+
+body.light-mode .education-content {
+    background: #f5f5f5;
+    color: var(--text-color);
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.1);
+}
